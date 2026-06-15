@@ -2112,18 +2112,38 @@ footer {
   }
 }
 
-
 /* =============================================
-   NAV — hide login btn on small tablet,
-   keep open account
+   NAV — fit everything on tablet
    ============================================= */
 
-@media (max-width: 900px) and (min-width: 769px) {
+@media (max-width: 1024px) and (min-width: 769px) {
   .nav-login-btn {
     display: none;
   }
-}
 
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+
+  .nav-cta {
+    gap: 6px;
+  }
+
+  .btn-sm {
+    padding: 8px 14px;
+    font-size: 0.75rem;
+  }
+
+  .logo-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .navbar-inner {
+    height: 64px;
+  }
+}
 
 /* =============================================
    TOP BAR — hide socials on small screens
