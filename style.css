@@ -1629,3 +1629,508 @@ footer {
   .newsletter-field-row { grid-template-columns: 1fr; }
   .newsletter-form-card { padding: 32px 24px; }
 }
+/* =============================================
+   FCMB PENSIONS — RESPONSIVE PATCH
+   Add this AFTER style.css (or append to it)
+   ============================================= */
+
+/* =============================================
+   HERO — 2-col side by side on tablet,
+   stack only on mobile
+   ============================================= */
+
+/* TABLET (769px – 1024px): keep left/right layout, shrink cards */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hero {
+    padding: 130px 0 80px;
+    min-height: unset;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr 1fr;   /* keep side by side */
+    gap: 32px;
+    align-items: center;
+    text-align: left;
+  }
+
+  /* SHOW the visual */
+  .hero-visual {
+    display: flex !important;
+    justify-content: center;
+  }
+
+  /* Shrink card stack to fit narrower column */
+  .hero-card-stack {
+    position: relative;
+    width: 280px;
+    height: 340px;
+    margin: 0 auto;
+  }
+
+  .pension-card.main {
+    width: 240px;
+    padding: 20px;
+  }
+
+  .pension-card.secondary {
+    width: 210px;
+    padding: 16px;
+    right: -10px;
+  }
+
+  .card-value {
+    font-size: 1.6rem;
+  }
+
+  .float-badge {
+    padding: 7px 10px;
+    gap: 6px;
+  }
+
+  .float-badge.rate {
+    right: -15px;
+    top: 50px;
+  }
+
+  .float-badge.secure {
+    left: -20px;
+    bottom: 70px;
+  }
+
+  .float-badge-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .float-badge-text strong { font-size: 0.75rem; }
+  .float-badge-text span   { font-size: 0.62rem; }
+
+  /* Keep headline readable */
+  .display-xl { font-size: clamp(1.9rem, 3.5vw, 2.8rem); }
+
+  .hero-subtext {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+}
+
+/* MOBILE (≤768px): stack vertically, show cards below text */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .hero-subtext {
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-trust {
+    justify-content: center;
+  }
+
+  /* SHOW the visual on mobile too */
+  .hero-visual {
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .hero-card-stack {
+    width: 290px;
+    height: 260px;
+    position: relative;
+  }
+
+  .pension-card {
+    position: absolute;
+  }
+
+  .pension-card.main {
+    width: 250px;
+    padding: 18px;
+    top: 0;
+    left: 0;
+  }
+
+  .pension-card.secondary {
+    width: 215px;
+    padding: 14px;
+    bottom: 0;
+    right: -5px;
+  }
+
+  .card-value {
+    font-size: 1.5rem;
+  }
+
+  .float-badge {
+    padding: 6px 9px;
+    gap: 5px;
+  }
+
+  .float-badge.rate {
+    top: 36px;
+    right: -12px;
+  }
+
+  .float-badge.secure {
+    bottom: 55px;
+    left: -16px;
+  }
+
+  .float-badge-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .float-badge-text strong { font-size: 0.72rem; }
+  .float-badge-text span   { font-size: 0.6rem; }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  .hero-card-stack {
+    width: 260px;
+    height: 240px;
+  }
+
+  .pension-card.main    { width: 225px; }
+  .pension-card.secondary { width: 195px; right: -5px; }
+}
+
+
+/* =============================================
+   STATS — Horizontal scrollable row on
+   mobile & tablet (single row, no wrap)
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .stats-section {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .stats-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE */
+    gap: 0;
+    /* keep each item from collapsing */
+    grid-template-columns: unset;
+  }
+
+  .stats-grid::-webkit-scrollbar {
+    display: none;                  /* Chrome/Safari */
+  }
+
+  .stat-item {
+    flex: 0 0 auto;
+    min-width: 160px;
+    padding: 24px 20px;
+    border-right: 1px solid rgba(61,10,92,0.07);
+    border-bottom: none;
+  }
+
+  /* Keep last item border for visual consistency when scrolled */
+  .stat-item:last-child {
+    border-right: 1px solid rgba(61,10,92,0.07);
+    padding-right: 28px;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .stat-item {
+    min-width: 140px;
+    padding: 20px 16px;
+  }
+
+  .stat-number {
+    font-size: 1.9rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+}
+
+/* Subtle "more to scroll" fade on right edge */
+@media (max-width: 1024px) {
+  .stats-section {
+    position: relative;
+  }
+
+  .stats-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+
+/* =============================================
+   SERVICES — 2-col on tablet, 1-col on mobile
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =============================================
+   MULTI-FUND — Stack nicely on tablet
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .multifund-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .multifund-content .btn {
+    margin: 0 auto;
+  }
+
+  .multifund-funds {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .multifund-funds {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =============================================
+   APP SECTION — show phone mockup on tablet,
+   hide on mobile (already hidden via existing rule)
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .app-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .phone-mockup {
+    width: 480px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .phone-mockup {
+    display: none;
+  }
+}
+
+
+/* =============================================
+   WHY GRID — 2-col tablet, 1-col mobile
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =============================================
+   NEWSLETTER — stack on tablet too
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .newsletter-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+
+/* =============================================
+   PLANS — side by side on tablet
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .plan-card {
+    padding: 36px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =============================================
+   RESOURCES — side by side on tablet
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =============================================
+   FOOTER — 2-col on tablet
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+
+/* =============================================
+   AWARDS — wrap nicely on mobile
+   ============================================= */
+
+@media (max-width: 640px) {
+  .awards-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .award-badge-card {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .award-badge-card img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* =============================================
+   GENERAL SECTION PADDING — tighter on mobile
+   ============================================= */
+
+@media (max-width: 768px) {
+  .services-section,
+  .multifund-section,
+  .plans-section,
+  .app-section,
+  .why-section,
+  .resources-section,
+  .newsletter-section,
+  .awards-section,
+  .faq-section,
+  .cta-section {
+    padding: 64px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section,
+  .multifund-section,
+  .plans-section,
+  .app-section,
+  .why-section,
+  .resources-section,
+  .newsletter-section,
+  .awards-section,
+  .faq-section,
+  .cta-section {
+    padding: 48px 0;
+  }
+}
+
+
+/* =============================================
+   NAV — hide login btn on small tablet,
+   keep open account
+   ============================================= */
+
+@media (max-width: 900px) and (min-width: 769px) {
+  .nav-login-btn {
+    display: none;
+  }
+}
+
+
+/* =============================================
+   TOP BAR — hide socials on small screens
+   ============================================= */
+
+@media (max-width: 900px) {
+  .top-bar-socials {
+    display: none;
+  }
+}
